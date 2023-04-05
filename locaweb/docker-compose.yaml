@@ -7,7 +7,7 @@ services:
     # LOCAWEB
     #
       relay:
-        image: fametec/postfix:locaweb
+        image: eftechcombr/postfix:locaweb
         restart: unless-stopped
         volumes:
          - postfix-volume:/var/spool/postfix

@@ -7,7 +7,7 @@ services:
     # MAILGUN
     #
       relay:
-        image: fametec/postfix:mailgun
+        image: eftechcombr/postfix:mailgun
         restart: unless-stopped
         volumes:
          - postfix-volume:/var/spool/postfix

@@ -8,7 +8,7 @@ Postfix SMTP Relay
     -e RELAY_USER=postmaster@domain \
     -e RELAY_PASS=xxxxxxxxx \
     -e RELAY_HOST=smtp.mailgun.org \
-    fametec/postfix:latest
+    eftechcombr/postfix:latest
 
 ## docker-compose
 
@@ -21,7 +21,7 @@ Postfix SMTP Relay
     # MAILGUN
     #
       relay:
-        image: fametec/postfix:latest
+        image: eftechcombr/postfix:latest
         restart: unless-stopped
         volumes: 
          - postfix-volume:/var/spool/postfix
@@ -42,6 +42,6 @@ Postfix SMTP Relay
 
  # testing
 
-    echo "Email Test" | mail -s "This is a simple test" contato@fametec.com.br
+    echo "Email Test" | mail -s "This is a simple test" contato@eftechcombr.com.br
  
  

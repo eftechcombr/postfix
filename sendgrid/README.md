@@ -7,14 +7,14 @@ Postfix SMTP Relay
     docker run --rm -d --name postfix \
     -e RELAY_USER=apikey \
     -e RELAY_PASS=xxxxxxxxx \
-    fametec/postfix:sendgrid
+    eftechcombr/postfix:sendgrid
 
 ## docker-compose
 
     version: '3.2'
     services:
       relay:
-        image: fametec/postfix:sendgrid
+        image: eftechcombr/postfix:sendgrid
         restart: unless-stopped
         volume: 
          - postfix-volume:/var/spool/postfix
@@ -30,6 +30,6 @@ Postfix SMTP Relay
 
  # testing
 
-    echo "Email Test" | mail -s "This is a simple test" contato@fametec.com.br
+    echo "Email Test" | mail -s "This is a simple test" contato@eftechcombr.com.br
  
  

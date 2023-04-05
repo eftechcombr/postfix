@@ -7,7 +7,7 @@ services:
 # GMAIL
 #
       relay:
-        image: fametec/postfix:gmail
+        image: eftechcombr/postfix:gmail
         restart: unless-stopped
         volumes:
          - postfix-volume:/var/spool/postfix

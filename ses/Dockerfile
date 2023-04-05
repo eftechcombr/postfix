@@ -1,6 +1,6 @@
 FROM alpine:3.11.5
 
-MAINTAINER eduardo@fametec.com.br
+MAINTAINER eduardo@eftechcombr.com.br
 
 ENV RELAY_USER postmaster@xxxxxxxxxxxxxxxxxxx
 

@@ -1,7 +1,7 @@
 version: '3.2'
 services:
     relay:
-        image: fametec/postfix:sendgrid
+        image: eftechcombr/postfix:sendgrid
         restart: unless-stopped
         volumes:
          - postfix-volume:/var/spool/postfix

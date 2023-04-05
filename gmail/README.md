@@ -7,7 +7,7 @@ Postfix SMTP Relay
     docker run --rm -d --name postfix \
     -e RELAY_USER=postmaster@domain \
     -e RELAY_PASS=xxxxxxxxx \
-    fametec/postfix:gmail
+    eftechcombr/postfix:gmail
 
 ## docker-compose
 
@@ -20,7 +20,7 @@ Postfix SMTP Relay
     # MAILGUN
     #
       relay:
-        image: fametec/postfix:gmail
+        image: eftechcombr/postfix:gmail
         restart: unless-stopped
         volume: 
          - postfix-volume:/var/spool/postfix
@@ -39,6 +39,6 @@ Postfix SMTP Relay
 
  # testing
 
-    echo "Email Test" | mail -s "This is a simple test" contato@fametec.com.br
+    echo "Email Test" | mail -s "This is a simple test" contato@eftechcombr.com.br
  
  
