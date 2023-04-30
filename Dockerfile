@@ -1,10 +1,10 @@
 FROM alpine:3.12
 
-ENV RELAY_USER postmaster@xxxxxxxxxxxxxxxxxxx
+ENV RELAY_USER=${RELAY_USER}
 
-ENV RELAY_PASS xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ENV RELAY_PASS=${RELAY_PASS}
 
-ENV RELAY_HOST smtp.mailgun.org
+ENV RELAY_HOST=${RELAY_HOST}
 
 RUN apk update \
 	&& apk upgrade \
