@@ -2,31 +2,24 @@
 [![Docker build dev](https://github.com/eftechcombr/postfix/actions/workflows/docker-publish-dev.yml/badge.svg?branch=dev)](https://github.com/eftechcombr/postfix/actions/workflows/docker-publish-dev.yml)
 
 
-# postfix
+# Postfix SMTP Relay container
 
-## Images
+Simple postfix smtp to use as relayhost to gmail, mailgun and more. 
 
- - [x] eftechcombr/postfix:latest
- - [ ] eftechcombr/postfix:mailgun
- - [ ] eftechcombr/postfix:mailgun-europe
- - [ ] eftechcombr/postfix:ses
- - [ ] eftechcombr/postfix:gmail
- - [ ] eftechcombr/postfix:office365
- - [ ] eftechcombr/postfix:sendgrid
- - [ ] eftechcombr/postfix:locaweb
- 
+<br>
 
-Postfix SMTP Relay
 
-## run
+
+## Docker run
 
     docker run --rm -d --name postfix \
     -e RELAY_USER=postmaster@domain \
     -e RELAY_PASS=xxxxxxxxx \
     -e RELAY_HOST=smtp.mailgun.org \
+    -e RELAY_PORT=587 \
     eftechcombr/postfix:latest
 
-## docker-compose
+## docker-compose.yaml
 
     version: '3.2'
     services:
@@ -37,20 +30,15 @@ Postfix SMTP Relay
          - postfix-volume:/var/spool/postfix
         ports:
          - "30025:25"
-        environment:
-         RELAY_USER: postmaster@XXXXXXXXXXXXXXXX
-         RELAY_PASS: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-         RELAY_HOST: smtp.mailgun.org
+        env_file: ./.env
     volumes:
       postfix-volume:
-      
-      
-> docker-compose up -d
+
 
 
  # testing
 
-    echo "Email Test" | mail -s "This is a simple test" contato@eftechcombr.com.br
+    echo "Email Test" | mail -s "This is a simple test" contato@example.com
  
 or
 
