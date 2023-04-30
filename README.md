@@ -25,13 +25,7 @@ Postfix SMTP Relay
 ## docker-compose
 
     version: '3.2'
-    #
-    ### Services
-    #
     services:
-    #
-    # MAILGUN
-    #
       relay:
         image: eftechcombr/postfix:latest
         restart: unless-stopped
@@ -43,14 +37,12 @@ Postfix SMTP Relay
          RELAY_USER: postmaster@XXXXXXXXXXXXXXXX
          RELAY_PASS: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
          RELAY_HOST: smtp.mailgun.org
-         
-    #
-    ### Volumes
-    #
     volumes:
       postfix-volume:
       
       
+> docker-compose up -d
+
 
  # testing
 
