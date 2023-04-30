@@ -109,7 +109,7 @@ jobs:
       - name: Promote to latest
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GIT_TOKEN }}
           commit-message: "Promote to production"
           title: "Promote to production"
           body: "This pull request promotes the changes in the homologation branch to the production branch."
