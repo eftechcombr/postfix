@@ -103,9 +103,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with: 
+          ref: latest
 
-      # - name: Make changes to pull request
-      #   run: date +%s > report.txt
+      - name: Reset promotion branch
+        run: |
+          git fetch origin latest:latest
+          git reset --hard latest
 
       - name: Create Pull Request
         id: cpr
@@ -116,8 +120,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: latest
-          #base: dev
+          branch: dev
           delete-branch: false
           title: '[github-actions] Automated PR'
           # body: |
