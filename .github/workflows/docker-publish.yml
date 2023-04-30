@@ -105,3 +105,13 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
+
+      - name: Promote to latest
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Promote to production"
+          title: "Promote to production"
+          body: "This pull request promotes the changes in the homologation branch to the production branch."
+          branch: latest
+          base: dev
