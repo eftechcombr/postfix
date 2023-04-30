@@ -1,10 +1,9 @@
 FROM alpine:3.12
 
 ENV RELAY_USER=${RELAY_USER}
-
 ENV RELAY_PASS=${RELAY_PASS}
-
 ENV RELAY_HOST=${RELAY_HOST}
+ENV RELAY_PORT=587
 
 RUN apk update \
 	&& apk upgrade \
@@ -25,7 +24,7 @@ RUN { \
 	echo 'mynetworks = 0.0.0.0/0' ; \
 	echo '#Set the relayhost' ; \
 	echo 'mydestination = localhost.localdomain, localhost' ; \
-	echo 'relayhost = [RELAY_HOST]:587' ; \
+	echo 'relayhost = [RELAY_HOST]:RELAY_PORT' ; \
 	echo 'smtp_sasl_auth_enable = yes' ; \
 	echo 'smtp_sasl_password_maps = static:RELAY_USER:RELAY_PASS' ; \
 	echo 'smtp_sasl_security_options = noanonymous' ; \
@@ -47,6 +46,7 @@ RUN { \
 	echo 'sed -i s/RELAY_USER/$RELAY_USER/g /etc/postfix/main.cf' ; \
 	echo 'sed -i s/RELAY_PASS/$RELAY_PASS/g /etc/postfix/main.cf' ; \
 	echo 'sed -i s/RELAY_HOST/$RELAY_HOST/g /etc/postfix/main.cf' ; \
+	echo 'sed -i s/RELAY_PORT/$RELAY_PORT/g /etc/postfix/main.cf' ; \
 	echo 'postfix start-fg' ; \
 	echo ; \
    	} > /entrypoint.sh && chmod +x /entrypoint.sh
