@@ -32,9 +32,9 @@ jobs:
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
         if: github.event_name != 'pull_request'
-        uses: sigstore/cosign-installer@f3c664df7af409cb4873aa5068053ba9d61a57b6 #v2.6.0
+        uses: sigstore/cosign-installer@main 
         with:
-          cosign-release: 'v1.13.1'
+          cosign-release: 'v2.0.2'
 
         # Add support for more platforms with QEMU (optional)
         # https://github.com/docker/setup-qemu-action
@@ -116,8 +116,8 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: dev
-          base: latest
+          branch: latest
+          #base: latest
           delete-branch: false
           title: '[github-actions] Automated PR'
           # body: |
