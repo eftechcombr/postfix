@@ -110,7 +110,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
           commit-message: "Promote to latest"
           title: "Promote to latest"
           body: "This pull request promotes the changes in the ${{ github.head_ref }} branch to the latest branch."
