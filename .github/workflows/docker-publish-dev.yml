@@ -136,8 +136,8 @@ jobs:
           labels: |
             report
             automated pr
-          assignees: peter-evans
-          reviewers: peter-evans
+          #assignees: peter-evans
+          #reviewers: peter-evans
           draft: false
           #team-reviewers: |
           #  developers
