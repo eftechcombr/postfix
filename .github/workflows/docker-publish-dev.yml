@@ -104,8 +104,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Make changes to pull request
-        run: date +%s > report.txt
+      # - name: Make changes to pull request
+      #   run: date +%s > report.txt
 
       - name: Create Pull Request
         id: cpr
@@ -116,8 +116,9 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: temporary-patches
-          delete-branch: true
+          branch: dev
+          base: latest
+          delete-branch: false
           title: '[github-actions] Automated PR'
           body: |
             Update report
