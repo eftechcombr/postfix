@@ -113,9 +113,9 @@ jobs:
           token: ${{ secrets.GIT_TOKEN }}
           commit-message: "Promote to latest"
           title: "Promote to latest"
-          body: "This pull request promotes the changes in the dev branch to the latest branch."
+          body: "This pull request promotes the changes in the ${{ github.head_ref }} branch to the latest branch."
           branch: latest
-          base: dev
+          base: ${{ github.head_ref }}
           
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
