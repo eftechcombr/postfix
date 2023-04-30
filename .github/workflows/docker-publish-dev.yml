@@ -116,9 +116,9 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches
+          branch: temporary-patches
           delete-branch: true
-          title: '[Example] Update report'
+          title: '[github-actions] Automated PR'
           body: |
             Update report
             - Updated with *today's* date
