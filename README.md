@@ -1,3 +1,7 @@
+[![Docker build latest](https://github.com/eftechcombr/postfix/actions/workflows/docker-publish-latest.yml/badge.svg)](https://github.com/eftechcombr/postfix/actions/workflows/docker-publish-latest.yml)
+[![Docker build dev](https://github.com/eftechcombr/postfix/actions/workflows/docker-publish-dev.yml/badge.svg?branch=dev)](https://github.com/eftechcombr/postfix/actions/workflows/docker-publish-dev.yml)
+
+
 # postfix
 
 ## Images
