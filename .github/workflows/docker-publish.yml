@@ -107,7 +107,8 @@ jobs:
 
 
       - name: Promote to latest
-        uses: peter-evans/create-pull-request@v3
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GIT_TOKEN }}
           commit-message: "Promote to latest"
@@ -115,3 +116,9 @@ jobs:
           body: "This pull request promotes the changes in the dev branch to the latest branch."
           branch: latest
           base: dev
+          
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
