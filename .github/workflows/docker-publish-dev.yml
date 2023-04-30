@@ -1,4 +1,4 @@
-name: Build Dev and Create Pull Request to latest
+name: Docker build dev
 
 on:
   push:
