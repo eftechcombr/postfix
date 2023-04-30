@@ -3,12 +3,12 @@
 ## Images
 
  - [x] eftechcombr/postfix:latest
- - [x] eftechcombr/postfix:mailgun
- - [x] eftechcombr/postfix:mailgun-europe
- - [x] eftechcombr/postfix:ses
- - [x] eftechcombr/postfix:gmail
- - [x] eftechcombr/postfix:office365
- - [x] eftechcombr/postfix:sendgrid
+ - [ ] eftechcombr/postfix:mailgun
+ - [ ] eftechcombr/postfix:mailgun-europe
+ - [ ] eftechcombr/postfix:ses
+ - [ ] eftechcombr/postfix:gmail
+ - [ ] eftechcombr/postfix:office365
+ - [ ] eftechcombr/postfix:sendgrid
  - [ ] eftechcombr/postfix:locaweb
  
 
