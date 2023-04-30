@@ -1,4 +1,4 @@
-FROM alpine:3.11.5
+FROM alpine:3.17.3
 
 ENV RELAY_USER postmaster@xxxxxxxxxxxxxxxxxxx
 
