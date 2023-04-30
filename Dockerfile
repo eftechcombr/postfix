@@ -10,12 +10,12 @@ RUN apk update \
 	&& apk upgrade \
 	&& apk add --no-cache ca-certificates \
 	&& apk add --no-cache postfix \
-	&& apk add --no-cache cyrus-sasl \
-	&& apk add --no-cache cyrus-sasl-plain \
-	&& apk add --no-cache cyrus-sasl-login \
-	&& apk add --no-cache cyrus-sasl-crammd5 \
-	&& apk add --no-cache cyrus-sasl-digestmd5 \
-	&& apk add --no-cache mailx
+	  cyrus-sasl \
+	  cyrus-sasl-plain \
+	  cyrus-sasl-login \
+	  cyrus-sasl-crammd5 \
+	  cyrus-sasl-digestmd5 \
+	  mailx
 
 RUN { \
 	echo ; \
