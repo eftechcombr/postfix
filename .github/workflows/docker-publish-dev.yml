@@ -12,8 +12,8 @@ on:
     branches: [ "dev" ]
     # Publish semver tags as releases.
     # tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ "latest" ]
+  #pull_request:
+  #  branches: [ "latest" ]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -113,9 +113,9 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
           commit-message: "Promote to latest"
           title: "Promote to latest"
-          body: "This pull request promotes the changes in the ${{ github.head_ref }} branch to the latest branch."
+          body: "This pull request promotes the changes in the dev branch to the latest branch."
           branch: latest
-          base: ${{ github.head_ref }}
+          base: dev
           
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
