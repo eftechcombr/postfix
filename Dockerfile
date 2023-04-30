@@ -1,4 +1,4 @@
-FROM alpine:3.17.3
+FROM alpine:3.12
 
 ENV RELAY_USER postmaster@xxxxxxxxxxxxxxxxxxx
 
@@ -9,7 +9,13 @@ ENV RELAY_HOST smtp.mailgun.org
 RUN apk update \
 	&& apk upgrade \
 	&& apk add --no-cache ca-certificates \
-	&& apk add --no-cache postfix cyrus-sasl cyrus-sasl-plain cyrus-sasl-login cyrus-sasl-crammd5 cyrus-sasl-digestmd5 mailx
+	&& apk add --no-cache postfix \
+	&& apk add --no-cache cyrus-sasl \
+	&& apk add --no-cache cyrus-sasl-plain \
+	&& apk add --no-cache cyrus-sasl-login \
+	&& apk add --no-cache cyrus-sasl-crammd5 \
+	&& apk add --no-cache cyrus-sasl-digestmd5 \
+	&& apk add --no-cache mailx
 
 RUN { \
 	echo ; \
