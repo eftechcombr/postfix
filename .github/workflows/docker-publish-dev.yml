@@ -65,8 +65,8 @@ jobs:
           flavor: |
             latest=auto
           tags: |
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
-            type=raw,value=${{ env.GITHUB_HEAD_REF }}
+            type=ref,enable=true,priority=600,prefix=,suffix=dev,event=branch
+          #  type=raw,value=${{ env.GITHUB_HEAD_REF }}
 
 
       # Build and push Docker image with Buildx (don't push on PR)
@@ -115,20 +115,12 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           branch: dev
-      
-      - name: create a repository_dispatch event
-        run: |
-          curl -X POST \
-          -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          -d '{"event_type": "update-repo"}' \
-          https://api.github.com/repos/eftechcombr/postfix-configuuration/dispatches
 
-      - name: create a repository_dispatch event
-        run: |
-          TOKEN=${{ secrets.PAT_TOKEN }}
-          curl -X POST \
-          -H "Authorization: token $TOKEN" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          -d '{"event_type": "update-repo"}' \
-          https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
+      # - name: create a repository_dispatch event
+      #   run: |
+      #     TOKEN=${{ secrets.PAT_TOKEN }}
+      #     curl -X POST \
+      #     -H "Authorization: token $TOKEN" \
+      #     -H "Accept: application/vnd.github.everest-preview+json" \
+      #     -d '{"event_type": "update-repo"}' \
+      #     https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
