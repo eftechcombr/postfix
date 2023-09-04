@@ -24,4 +24,10 @@ spec:
         ports:
         - containerPort: 25
         resources: {}
+        volumeMounts: 
+        - name: data
+          mountPath: /var/spool/postfix
+      volumes: 
+      - name: data
+        emptyDir: {}
 status: {}
