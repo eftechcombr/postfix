@@ -107,3 +107,13 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
+
+      - name: create a repository_dispatch event
+        run: |
+          TOKEN=${{ secrets.PAT_TOKEN }}
+          curl -X POST \
+          -H "Authorization: token $TOKEN" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          -d '{"event_type": "update-repo"}' \
+          https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
+
