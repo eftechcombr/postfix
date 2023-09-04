@@ -108,6 +108,13 @@ jobs:
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
 
+  createPullRequest:
+    runs-on: ubuntu-latest
+    needs: build 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: create a repository_dispatch event
         run: |
           TOKEN=${{ secrets.PAT_TOKEN }}
