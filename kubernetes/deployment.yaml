@@ -5,7 +5,6 @@ metadata:
   labels:
     app: postfix
   name: postfix
-  namespace: prod
 spec:
   replicas: 1
   selector:

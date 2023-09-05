@@ -6,7 +6,6 @@ metadata:
   labels:
     app: postfix
   name: postfix
-  namespace: prod
 spec:
   ports:
   - name: postfix
