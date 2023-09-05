@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postfix
+  namespace: postfix
+spec:
+  selector:
+    matchLabels:
+      run: postfix
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: postfix
+    spec:
+      containers:
+      - name: postfix
+        image: postfix:latest
