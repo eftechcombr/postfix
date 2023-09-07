@@ -8,6 +8,9 @@ on:
     branches: 
       - latest
 
+env: 
+  PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
+
 jobs:
 
   dispatch:
@@ -21,7 +24,7 @@ jobs:
           curl -X POST \
           -H "Authorization: token $TOKEN" \
           -H "Accept: application/vnd.github.everest-preview+json" \
-          -d '{"event_type": "update-repo"}' \
+          -d '{"event_type": "update-repo", "from": "${{ github.repository}}", "branch": ${{ github.ref_name}}, "destination": "${{ env.PATH_DESTINATION }}"}' \
           https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
 
 
