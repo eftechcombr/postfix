@@ -1,13 +1,13 @@
-name: Docker build
+name: Build and Publish
 
 on:
   push:
     branches:
       - "dev"
       - "latest"
-  pull_request:
-    branches:
-      - "latest" 
+  # pull_request:
+  #   branches:
+  #     - "latest" 
 
 env:
   REGISTRY: "docker.io"
@@ -97,32 +97,3 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
-
-
-  createPullRequest:
-    runs-on: ubuntu-latest
-    needs: build 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: latest
-
-      - name: Reset dev branch
-        run: |
-          git fetch origin dev:dev
-          git reset --hard dev
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          branch: dev
-
-      - name: create a repository_dispatch event
-        if: github.ref == 'refs/heads/latest'
-        run: |
-          TOKEN=${{ secrets.PAT_TOKEN }}
-          curl -X POST \
-          -H "Authorization: token $TOKEN" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          -d '{"event_type": "update-repo"}' \
-          https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
