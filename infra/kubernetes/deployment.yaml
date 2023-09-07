@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postfix
-  namespace: default
+  namespace: sandbox
 spec:
   selector:
     matchLabels:
