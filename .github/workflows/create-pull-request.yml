@@ -1,0 +1,39 @@
+name: Create Pull Request
+
+on:
+  workflow_run:
+    workflows: ["Build and Publish"]
+    types:
+      - completed
+
+jobs:
+
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: latest
+
+      - name: Reset dev branch
+        run: |
+          git fetch origin dev:dev
+          git reset --hard dev
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: dev
+
+      - name: create a repository_dispatch event
+        if: github.ref == 'refs/heads/latest'
+        run: |
+          TOKEN=${{ secrets.PAT_TOKEN }}
+          curl -X POST \
+          -H "Authorization: token $TOKEN" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          -d '{"event_type": "update-repo"}' \
+          https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
+
+
+          
