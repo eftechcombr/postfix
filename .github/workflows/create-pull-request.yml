@@ -5,6 +5,8 @@ on:
     workflows: ["Build and Publish"]
     types:
       - completed
+    branches: 
+      - dev
 
 jobs:
 
