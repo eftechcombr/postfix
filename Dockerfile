@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.18
 
 ENV RELAY_USER=${RELAY_USER}
 ENV RELAY_PASS=${RELAY_PASS}
@@ -10,7 +10,6 @@ RUN apk update \
 	&& apk add --no-cache ca-certificates \
 	&& apk add --no-cache postfix \
 	  cyrus-sasl \
-	  cyrus-sasl-plain \
 	  cyrus-sasl-login \
 	  cyrus-sasl-crammd5 \
 	  cyrus-sasl-digestmd5 \
