@@ -9,6 +9,7 @@ on:
       - latest
 
 env: 
+  REPO_DESTINATION: "eftechcombr/iac"
   PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
 
 jobs:
@@ -24,8 +25,8 @@ jobs:
           curl -X POST \
           -H "Authorization: token $TOKEN" \
           -H "Accept: application/vnd.github.everest-preview+json" \
-          -d '{"event_type": "update-repo", "from": "${{ github.repository}}", "branch": ${{ github.ref_name}}, "destination": "${{ env.PATH_DESTINATION }}"}' \
-          https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
+          -d '{ "event_type": "update-repo", "client_payload": { "from": "${{ github.repository}}", "branch": ${{ github.ref_name}}, "destination": "${{ env.PATH_DESTINATION }}" } }' \
+          https://api.github.com/repos/${{ env.REPO_DESTINATION }}/dispatches
 
 
           
