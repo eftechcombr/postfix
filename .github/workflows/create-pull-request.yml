@@ -1,4 +1,4 @@
-name: Create Pull Request
+name: Create Pull Request to latest
 
 on:
   workflow_run:
@@ -27,15 +27,6 @@ jobs:
         with:
           branch: dev
 
-      - name: create a repository_dispatch event
-        if: github.ref == 'refs/heads/latest'
-        run: |
-          TOKEN=${{ secrets.PAT_TOKEN }}
-          curl -X POST \
-          -H "Authorization: token $TOKEN" \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          -d '{"event_type": "update-repo"}' \
-          https://api.github.com/repos/eftechcombr/postfix-configuration/dispatches
-
+          
 
           
