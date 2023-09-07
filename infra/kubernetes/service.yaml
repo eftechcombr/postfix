@@ -4,7 +4,7 @@ metadata:
   name: postfix
   labels:
     run: postfix
-  namespace: sandbox
+  namespace: default
 spec:
   ports:
   - port: 80
