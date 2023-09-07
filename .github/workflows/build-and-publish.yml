@@ -1,8 +1,13 @@
-name: Docker build dev
+name: Docker build
 
 on:
   push:
-    branches: [ "dev" ]
+    branches:
+      - "dev"
+      - "latest"
+  pull_request:
+    branches:
+      - "latest" 
 
 env:
   REGISTRY: "docker.io"
@@ -113,6 +118,7 @@ jobs:
           branch: dev
 
       - name: create a repository_dispatch event
+        if: github.ref == 'refs/heads/latest'
         run: |
           TOKEN=${{ secrets.PAT_TOKEN }}
           curl -X POST \
