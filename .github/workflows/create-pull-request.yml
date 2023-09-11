@@ -26,7 +26,7 @@ jobs:
         with:
           files: infra/kubernetes/kustomization.yaml
         env:
-          image.newTag: ${{ github.sha }}
+          images.newTag: ${{ github.sha }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
