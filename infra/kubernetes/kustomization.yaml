@@ -12,4 +12,4 @@ resources:
 images:
 - name: postfix
   newName: eftechcombr/postfix
-  newTag: latest
+  newTag: aef01226b34d6f4f4cf238d252f75c3c31837116
