@@ -21,10 +21,6 @@ jobs:
         run: |
           git fetch origin dev:dev
           git reset --hard dev
-       
-      - name: Replace image Tag 
-        run: |
-          sed -i "s/newTag: latest/newTag: ${{ github.sha }}/" infra/kubernetes/kustomization.yaml
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
