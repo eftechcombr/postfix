@@ -66,6 +66,7 @@ jobs:
           flavor: |
             latest=auto
           tags: |
+            type=sha,enable=true,priority=100,prefix=,suffix=,format=long
             type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
             type=raw,value=${{ github.ref_name }}
 
