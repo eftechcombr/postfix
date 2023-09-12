@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-nameSuffix: -sandbox
+# nameSuffix: -sandbox
 namespace: sandbox
 
 resources:
@@ -12,4 +12,4 @@ resources:
 images:
 - name: postfix
   newName: eftechcombr/postfix
-  newTag: aef01226b34d6f4f4cf238d252f75c3c31837116
+  newTag: dev
