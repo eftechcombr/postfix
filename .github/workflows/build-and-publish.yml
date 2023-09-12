@@ -12,7 +12,8 @@ on:
 env:
   REGISTRY: "docker.io"
   IMAGE_NAME: ${{ github.repository }}
-
+  REPO_DESTINATION: "eftechcombr/iac"
+  PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
 
 jobs:
   build-and-publish:
@@ -98,3 +99,14 @@ jobs:
       #   # This step uses the identity token to provision an ephemeral certificate
       #   # against the sigstore community Fulcio instance.
       #   run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+
+
+      - name: create a repository_dispatch event
+        if: ${{ github.ref_name }} != 'latest' 
+        run: |
+          TOKEN=${{ secrets.PAT_TOKEN }}
+          curl -X POST \
+          -H "Authorization: token $TOKEN" \
+          -H "Accept: application/vnd.github.everest-preview+json" \
+          -d '{ "event_type": "update-repo", "client_payload": { "sha": "${{ github.sha }}", "from": "${{ github.repository}}", "branch": "${{ github.ref_name}}", "destination": "${{ env.PATH_DESTINATION }}" } }' \
+          https://api.github.com/repos/${{ env.REPO_DESTINATION }}/dispatches
