@@ -10,7 +10,7 @@ on:
 
 env: 
   REPO_DESTINATION: "eftechcombr/iac"
-  PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
+  PATH_DESTINATION: "files/kubernetes/prod/postfix"
 
 jobs:
 
