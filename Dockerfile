@@ -5,6 +5,7 @@ ENV RELAY_PASS=${RELAY_PASS}
 ENV RELAY_HOST=${RELAY_HOST}
 ENV RELAY_PORT=587
 
+
 RUN apk update \
 	&& apk upgrade \
 	&& apk add --no-cache ca-certificates \
