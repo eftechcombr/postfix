@@ -12,8 +12,7 @@ on:
 env:
   REGISTRY: "docker.io"
   IMAGE_NAME: ${{ github.repository }}
-  REPO_DESTINATION: "eftechcombr/iac"
-  PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
+
 
 jobs:
   build-and-publish:
@@ -102,7 +101,10 @@ jobs:
 
 
       - name: create a repository_dispatch event
-        if: ${{ github.ref_name }} != 'latest' 
+        if: ${{ github.ref_name }} == 'dev' 
+        env: 
+          REPO_DESTINATION: "eftechcombr/iac"
+          PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
         run: |
           TOKEN=${{ secrets.PAT_TOKEN }}
           curl -X POST \
