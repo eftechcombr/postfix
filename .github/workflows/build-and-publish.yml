@@ -106,7 +106,7 @@ jobs:
           REPO_DESTINATION: "eftechcombr/iac"
           PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
         run: |
-          TOKEN=${{ secrets.PAT_TOKEN }}
+          TOKEN=${{ secrets.GIT_APP_TOKEN }}
           curl -X POST \
           -H "Authorization: token $TOKEN" \
           -H "Accept: application/vnd.github.everest-preview+json" \
