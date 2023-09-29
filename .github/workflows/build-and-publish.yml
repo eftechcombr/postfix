@@ -99,6 +99,19 @@ jobs:
       #   # against the sigstore community Fulcio instance.
       #   run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Use the token
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh api octocat
+
 
       - name: create a repository_dispatch event
         if: ${{ github.ref_name }} == 'dev' 
@@ -106,7 +119,7 @@ jobs:
           REPO_DESTINATION: "eftechcombr/iac"
           PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
         run: |
-          TOKEN=${{ secrets.GIT_APP_TOKEN }}
+          TOKEN=${{ steps.generate_token.outputs.token }}
           curl -X POST \
           -H "Authorization: token $TOKEN" \
           -H "Accept: application/vnd.github.everest-preview+json" \
