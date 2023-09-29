@@ -1,0 +1,29 @@
+name: Dispatch to IaC
+
+on:
+  workflow_dispatch: 
+
+env: 
+  REPO_DESTINATION: "eftechcombr/iac"
+  PATH_DESTINATION: "files/kubernetes/prod/postfix"
+
+jobs:
+
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Use the token
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh api octocat
+      
