@@ -10,6 +10,6 @@ resources:
 
 
 images:
-- name: postfix
+- name: eftechcombr/postfix
   newName: eftechcombr/postfix
   newTag: dev
