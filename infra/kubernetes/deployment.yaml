@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
       - name: postfix
-        image: postfix:latest
+        image: eftechcombr/postfix:latest
