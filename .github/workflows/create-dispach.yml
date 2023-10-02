@@ -43,7 +43,7 @@ jobs:
           -H "Authorization: Bearer ${{ steps.generate_token.outputs.token }}" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           -d '{ "event_type": "update-repo" }' \
-          https://api.github.com/repos/${{ env.REPO_DESTINATION }}/dispatches
+          https://api.github.com/repos/${{ env.DESTINATION_OWNER }}/${{ env.DESTINATION_REPO }}/dispatches
 
       
       # - name: create a repository_dispatch event
