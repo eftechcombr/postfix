@@ -139,6 +139,13 @@ jobs:
           DESTINATION_PATH: "files/kubernetes/sandbox/postfix"
         with:
           route: POST /repos/${{ env.DESTINATION_OWNER }}/${{ env.DESTINATION_REPO }}/dispatches
-          mediaType: |
-            event_type: "update-repo", client_payload: { "sha": "${{ github.sha }}", "from": "${{ github.repository}}", "branch": "${{ github.ref_name}}", "destination": "${{ env.DESTINATION_PATH }}" }
+          output: |
+            { 
+              "event_type": "update-repo"   
+              "client_payload": { 
+                "sha": "${{ github.sha }}" 
+                "from": "${{ github.repository}}" 
+                "branch": "${{ github.ref_name}}" 
+                "destination": "${{ env.DESTINATION_PATH }}" 
+            }
       - run: "echo latest release: '${{ steps.repository_dispatches.outputs.data }}'"
