@@ -141,11 +141,11 @@ jobs:
           route: POST /repos/${{ env.DESTINATION_OWNER }}/${{ env.DESTINATION_REPO }}/dispatches
           output: |
             { 
-              "event_type": "update-repo"   
+              "event_type": "update-repo",   
               "client_payload": { 
-                "sha": "${{ github.sha }}" 
-                "from": "${{ github.repository}}" 
-                "branch": "${{ github.ref_name}}" 
+                "sha": "${{ github.sha }}", 
+                "from": "${{ github.repository}}", 
+                "branch": "${{ github.ref_name}}",
                 "destination": "${{ env.DESTINATION_PATH }}" 
             }
       - run: "echo latest release: '${{ steps.repository_dispatches.outputs.data }}'"
