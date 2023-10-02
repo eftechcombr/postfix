@@ -53,4 +53,3 @@ jobs:
             { "event_type": "update-repo", "client_payload": { "sha": "${{ github.sha }}", "from": "${{ github.repository}}", "branch": "${{ github.ref_name}}", "destination": "${{ env.DESTINATION_PATH }}" } }
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-      - run: "echo latest release: '${{ steps.repository_dispatches.outputs.data }}'"
