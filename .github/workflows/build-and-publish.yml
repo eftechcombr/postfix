@@ -127,6 +127,6 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: token $TOKEN" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
-          -d '{ "event_type": "update-repo", "client_payload": { "sha": "${{ github.sha }}", "from": "${{ github.repository}}", "branch": "${{ github.ref_name}}", "destination": "${{ env.PATH_DESTINATION }}" } }' \
+          -d '{ "event_type": "update-repo", "branch": "dev", "organization": "eftechcombr", "repository": "iac", "sender": "github-actions", "client_payload": { "sha": "${{ github.sha }}", "from": "${{ github.repository}}", "branch": "${{ github.ref_name}}", "destination": "${{ env.PATH_DESTINATION }}" } }' \
           https://api.github.com/repos/${{ env.REPO_DESTINATION }}/dispatches
 
