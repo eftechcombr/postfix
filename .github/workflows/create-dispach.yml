@@ -48,9 +48,7 @@ jobs:
       - uses: octokit/request-action@v2.x
         id: repository_dispatches
         with:
-          route: POST /repos/{owner}/{repo}/dispatches
-          owner: ${{ env.DESTINATION_OWNER }}
-          repo: ${{ env.DESTINATION_REPO }}
+          route: POST /repos/${{ env.DESTINATION_OWNER }}/${{ env.DESTINATION_REPO }}/dispatches
           data: |
             { "event_type": "update-repo", "client_payload": { "sha": "${{ github.sha }}", "from": "${{ github.repository}}", "branch": "${{ github.ref_name}}", "destination": "${{ env.DESTINATION_PATH }}" } }
         env:
