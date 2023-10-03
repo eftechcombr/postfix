@@ -96,9 +96,7 @@ jobs:
               "destination": "${{ env.PATH_DESTINATION }}"
             }
           }
-          JSON
-
-          echo "$PAYLOAD" | gh api --method POST "repos/${{ env.REPO_DESTINATION }}/dispatches" \
+          JSON | gh api --method POST "repos/${{ env.REPO_DESTINATION }}/dispatches" \
           --header "Accept: application/vnd.github+json" \
           --header "X-GitHub-Api-Version: 2022-11-28" --input -
  
