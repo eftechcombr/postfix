@@ -86,7 +86,7 @@ jobs:
           REPO_DESTINATION: "eftechcombr/iac"
           PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
         run: |
-          read -r -d '' PAYLOAD <<-JSON
+          echo <<EOT > payload.json
           {
             event_type: "update-repo", 
             client_payload: {
@@ -96,9 +96,9 @@ jobs:
               destination: "${{ env.PATH_DESTINATION }}"
             }
           }
-          JSON
+          EOT 
           
-          echo "$PAYLOAD"
+          cat payload.json
 
 #           curl -v -L \
 #           -X POST \
