@@ -1,13 +1,13 @@
 name: Dispatch to IaC
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Build and Publish"]
     types:
       - completed
     branches: 
       - latest
-  workflow_dispatch:
 
 env: 
   DESTINATION_OWNER: "eftechcombr"
