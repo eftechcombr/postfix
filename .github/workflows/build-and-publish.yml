@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pull_requests: write
       packages: write
       id-token: write
 
@@ -87,8 +88,8 @@ jobs:
         env:
           REPO_DESTINATION: "eftechcombr/iac"
           PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
-          #GITHUB_TOKEN: ${{ secrets.PAT }}
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}    
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          # GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}    
         with:
           route: POST /repos/${{ env.REPO_DESTINATION }}/dispatches
           data: '{
