@@ -92,7 +92,7 @@ jobs:
         with:
           route: POST /repos/${{ env.REPO_DESTINATION }}/dispatches
           headers: |
-            authorization: Bearer ${{ steps.generate_token.outputs.token }}
+            authorization: "Bearer ${{ steps.generate_token.outputs.token }}"
           data: '{
             event_type: "update-repo", 
             client_payload: {
