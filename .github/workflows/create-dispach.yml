@@ -39,7 +39,9 @@ jobs:
         uses: octokit/request-action@v2.x
         if: ${{ github.ref_name }} == 'dev' 
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}    
+          # GITHUB_TOKEN: ${{ secrets.PAT }}    
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}    
+
         with:
           route: POST /repos/${{ env.DESTINATION_OWNER }}/${{ env.DESTINATION_REPO }}/dispatches
           data: '{
