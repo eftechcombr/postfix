@@ -84,7 +84,13 @@ jobs:
         id: post_dispatch
         with:
           route: POST /repos/${{ env.REPO_DESTINATION }}/dispatches
-          data: '{ event_type: "update-repo", client_payload: { sha: "${{ github.sha }}", from: "${{ github.repository}}", branch: "${{ github.ref_name}}", destination: "${{ env.PATH_DESTINATION }}" } }'
+          # data: '{ event_type: "update-repo", client_payload: { sha: "${{ github.sha }}", from: "${{ github.repository}}", branch: "${{ github.ref_name}}", destination: "${{ env.PATH_DESTINATION }}" } }'
+          event_type: "update-repo"
+          client_payload: |
+            sha: "${{ github.sha }}"
+            from: "${{ github.repository}}"
+            branch: "${{ github.ref_name}}"
+            destination: "${{ env.PATH_DESTINATION }}"
         env:
           REPO_DESTINATION: "eftechcombr/iac"
           PATH_DESTINATION: "files/kubernetes/sandbox/postfix"
