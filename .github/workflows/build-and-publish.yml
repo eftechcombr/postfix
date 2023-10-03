@@ -98,7 +98,7 @@ jobs:
           }
           JSON
           
-          cat "$PAYLOAD"
+          echo "$PAYLOAD"
 
 #           curl -v -L \
 #           -X POST \
