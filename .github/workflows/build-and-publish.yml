@@ -88,15 +88,17 @@ jobs:
         run: |
           read -r -d '' PAYLOAD <<-JSON
           {
-            "event_type": "update-repo", 
-            "client_payload": {
-              "sha": "${{ github.sha }}", 
-              "from": "${{ github.repository}}", 
-              "branch": "${{ github.ref_name}}", 
-              "destination": "${{ env.PATH_DESTINATION }}"
+            event_type: "update-repo", 
+            client_payload: {
+              sha: "${{ github.sha }}", 
+              from: "${{ github.repository}}", 
+              branch: "${{ github.ref_name}}", 
+              destination: "${{ env.PATH_DESTINATION }}"
             }
           }
-          JSON | gh api --method POST "repos/${{ env.REPO_DESTINATION }}/dispatches" \
+          JSON
+          
+          echo "$PAYLOAD" | gh api --method POST "repos/${{ env.REPO_DESTINATION }}/dispatches" \
           --header "Accept: application/vnd.github+json" \
           --header "X-GitHub-Api-Version: 2022-11-28" --input -
  
