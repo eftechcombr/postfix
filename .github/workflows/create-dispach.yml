@@ -27,6 +27,7 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
 
       - name: Use the token
         env:
@@ -40,6 +41,8 @@ jobs:
         if: ${{ github.ref_name }} == 'dev' 
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}    
+          # GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}    
+
         with:
           route: POST /repos/${{ env.DESTINATION_OWNER }}/${{ env.DESTINATION_REPO }}/dispatches
           data: '{
