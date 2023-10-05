@@ -3,7 +3,6 @@ name: Auto-Approve Pull Requests to Stage
 on:
   pull_request:
     branches:
-      - "latest"
       - "dev"
 
 jobs:
@@ -35,3 +34,10 @@ jobs:
           pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           gh pr review $pr_number --approve --body "Auto-approving this PR."
 
+
+      - name: Merge Approved PR
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          gh pr merge $pr_number --auto --merge "$pr_number"
