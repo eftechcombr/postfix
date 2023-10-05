@@ -7,7 +7,6 @@ Simple postfix smtp to use as relayhost to gmail, mailgun and more.
 
 <br>
 
-
 ## Docker run
 
     docker run --rm -d --name postfix \
