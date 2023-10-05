@@ -35,6 +35,7 @@ Simple postfix smtp to use as relayhost to gmail, mailgun and more.
 
  # testing
 
+    
     echo "Email Test" | mail -s "This is a simple test" contato@example.com
  
 or
@@ -46,5 +47,8 @@ or
     .
 
 
+
+
+Use https://www.mail-tester.com tool for debug
 
 
