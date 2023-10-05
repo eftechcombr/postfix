@@ -3,7 +3,8 @@ name: Auto-Approve Pull Requests to Stage
 on:
   pull_request:
     branches:
-      - latest
+      - "latest"
+      - "dev"
 
 jobs:
   auto-approve:
