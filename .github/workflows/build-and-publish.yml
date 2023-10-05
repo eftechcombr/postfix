@@ -76,7 +76,6 @@ jobs:
       - name: Use the token
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-          REPO_DESTINATION: "eftechcombr/iac"
         run: |
           gh api octocat 
 
