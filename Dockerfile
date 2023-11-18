@@ -43,10 +43,10 @@ RUN { \
 RUN { \
 	echo '#!/bin/sh' ; \
 	echo ; \
-	echo 'sed -i s/RELAY_USER/$RELAY_USER/g /etc/postfix/main.cf' ; \
-	echo 'sed -i s/RELAY_PASS/$RELAY_PASS/g /etc/postfix/main.cf' ; \
-	echo 'sed -i s/RELAY_HOST/$RELAY_HOST/g /etc/postfix/main.cf' ; \
-	echo 'sed -i s/RELAY_PORT/$RELAY_PORT/g /etc/postfix/main.cf' ; \
+	echo 'sed -i "s|RELAY_USER|$RELAY_USER|g" /etc/postfix/main.cf' ; \
+	echo 'sed -i "s|RELAY_PASS|$RELAY_PASS|g" /etc/postfix/main.cf' ; \
+	echo 'sed -i "s|RELAY_HOST|$RELAY_HOST|g" /etc/postfix/main.cf' ; \
+	echo 'sed -i "s|RELAY_PORT|$RELAY_PORT|g" /etc/postfix/main.cf' ; \
 	echo 'postfix start-fg' ; \
 	echo ; \
    	} > /entrypoint.sh && chmod +x /entrypoint.sh
