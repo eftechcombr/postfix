@@ -8,6 +8,6 @@ services:
       - postfix-volume:/var/spool/postfix
     ports:
       - "30025:25"
-    env_file: ./.env
+    env_file: ./.env  ## See .env_sample.txt
 volumes:
   postfix-volume:
