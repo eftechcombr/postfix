@@ -10,8 +10,10 @@ jobs:
       with:
         go-version: 1.22
     - name: Install latest version of Kind
+      env: 
+        GO111MODULE: on
       run: |
-        GO111MODULE=on go get sigs.k8s.io/kind
+        go install sigs.k8s.io/kind@v0.22.0
     - name: Create Kind cluster
       run: |
         PATH=$(go env GOPATH)/bin:$PATH kind create cluster --config kind-config.yaml
