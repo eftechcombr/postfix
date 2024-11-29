@@ -1,0 +1,22 @@
+name: Check Pull Request Title Prefix
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  check-pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Validate Pull Request Title
+        run: |
+          title=$(echo "${{ github.event.pull_request.title }}" | sed -E 's/^[ \t]+//; s/[ \t]+$//')
+          if [[ ! "$title" =~ EC- ]]; then
+            echo "❌ Pull Request title must start with '[EC-.3] -'. Please update your title."
+            exit 1
+          else
+            echo "✅ Pull Request title prefix is valid."
+          fi
